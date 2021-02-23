@@ -1,7 +1,9 @@
-package com.btg.work;
+package com.btg.work.model;
 
 import java.sql.*;
 import java.util.*;
+
+import com.btg.work.ConnectionUtility;
 
 public class ClientDAO {
 	

@@ -1,7 +1,17 @@
-package com.btg.work;
+package com.btg.work.action;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import com.btg.work.model.Client;
+import com.btg.work.model.ClientDAO;
+import com.btg.work.model.Consultation;
+import com.btg.work.model.ConsultationDAO;
+import com.btg.work.model.Employee;
+import com.btg.work.model.EmployeeDAO;
+import com.btg.work.model.Intervention;
+import com.btg.work.model.InterventionDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;

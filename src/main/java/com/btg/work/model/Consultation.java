@@ -1,4 +1,4 @@
-package com.btg.work;
+package com.btg.work.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.btg.work;
+package com.btg.work.model;
 
 public class Employee {
 	private Integer empId;

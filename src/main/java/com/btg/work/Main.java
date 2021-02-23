@@ -3,6 +3,11 @@ package com.btg.work;
 import java.sql.SQLException;
 import java.util.*;
 
+import com.btg.work.model.Consultation;
+import com.btg.work.model.ConsultationDAO;
+import com.btg.work.model.Employee;
+import com.btg.work.model.EmployeeDAO;
+
 public class Main {
 	
 	public static void main(String args[]) throws SQLException {		
