@@ -4,18 +4,32 @@
     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    id="WebApp_ID" version="3.0">
-     
+    id="WebApp_ID" version="3.0">     
     <display-name>Bridge That Gap</display-name>
+
+<!--   Servlet Mappings  -->    
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>com.btg.work.action.IndexServlet</servlet-class>
+    </servlet>
+
+	<servlet-mapping>
+    	<servlet-name>IndexServlet</servlet-name>
+    	<url-pattern>/index</url-pattern>
+	</servlet-mapping>
      
     <servlet>
         <servlet-name>QuickServlet</servlet-name>
-        <servlet-class>com.btg.work.QuickServlet</servlet-class>
-    </servlet>
-   
+        <servlet-class>com.btg.work.action.QuickServlet</servlet-class>
+    </servlet>   
     <servlet-mapping>
         <servlet-name>QuickServlet</servlet-name>
         <url-pattern>/QuickServlet</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
+    
+<!--   JSP Mappings  -->    
      
+<welcome-file-list>
+    <welcome-file>index</welcome-file>
+</welcome-file-list>
 </web-app>

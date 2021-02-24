@@ -15,7 +15,6 @@ public class Employee {
 		this.role = role;
 		this.specialization = specialization;
 		this.email = email;
-		//this.password = password;
 	}
 	
 	public Integer getEmpId() {

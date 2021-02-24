@@ -24,7 +24,7 @@ public class QuickServlet extends HttpServlet {
      * by the client
      */
     public void init(ServletConfig config) {
-        System.out.println("Servlet is being initialized");
+        System.out.println("Quick Servlet initialized");
     }
  
     /**
