@@ -14,28 +14,12 @@ public class IndexServlet extends HttpServlet {
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    try  {
-	    	System.out.println("Index Servlet GET()");
-	        /*EmployeeDAO employeeDAO = new EmployeeDAO();
-	        List<Employee> employeeList = employeeDAO.getAllEmployees();			
-			
-	        (request.getSession()).setAttribute("SessionAttributeTest", "It works?!!");	
-			(request.getSession()).setAttribute("Employees", employeeList);	
-			*/
-			RequestDispatcher rs = request.getRequestDispatcher("home.jsp");
-			rs.forward(request, response);			
-	       
-	    } catch(SQLException e) {
-	    	   throw new RuntimeException(e);
-	    }
-
+		System.out.println("Index Servlet GET()");
+		RequestDispatcher rs = request.getRequestDispatcher("login.jsp");
+		rs.forward(request, response);
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {		
-
-	    }
-	 
-	    public void destroy() {
+    public void destroy() {
 	        System.out.println("Index Servlet destroyed");
-	    }
 	}
+}

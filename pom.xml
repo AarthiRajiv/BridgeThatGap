@@ -3,9 +3,12 @@
   <groupId>Work</groupId>
   <artifactId>BridgeThatGap</artifactId>
   <version>1</version>
-  <name>MyMVCProject</name>
-  <description>MyMVCProject</description>
+  <name>BridgeThatGap</name>
+  <description>BridgeThatGap</description>
   <packaging>war</packaging>
+  <build>
+  	<finalName>BridgeThatGap</finalName>
+  </build>
   
   
   
@@ -16,6 +19,14 @@
 	    <groupId>org.postgresql</groupId>
 	    <artifactId>postgresql</artifactId>
 	    <version>42.2.18</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.12</version>
+    	<scope>test</scope>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->

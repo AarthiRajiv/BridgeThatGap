@@ -1,2 +1,2 @@
 # bridgethatgap
-Bridging gender and racial gaps in tech employment
+We help Bridge  Gender and Racial gaps in tech Employment
