@@ -30,9 +30,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ResultSet rs = ps.executeQuery();
 			
 		Employee e = null;
-		while(rs.next()) {
-			e= new Employee(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-		} //built Employee with all except password column
+		if (rs.next()) { //on valid login, return Employee with all fields except password column
+			e = new Employee(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+		} 			
 		return e;		
 	}
 }

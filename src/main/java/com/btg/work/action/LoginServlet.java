@@ -23,9 +23,24 @@ public class LoginServlet extends HttpServlet {
 	    	System.out.println("Login Servlet GET()");
 	        EmployeeDAO employeeDAO = new EmployeeDAOImpl();	        
 	        Employee e = employeeDAO.verifyLogin(request.getParameter("email"), request.getParameter("password"));			
+			String nextPage="login.jsp";
 			
-	        (request.getSession()).setAttribute("employee", e);	
-			RequestDispatcher rs = request.getRequestDispatcher("home.jsp");
+	        if (e != null) { // login successful
+	        	//save logged in Employee in session
+	        	(request.getSession()).setAttribute("employee", e); 
+				
+	        	// get all consultations for this employee in response
+	        	ConsultationDAO consultationDAO = new ConsultationDAOImpl();
+	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
+	        	(request.getSession()).setAttribute("consultationList", consultationList);
+	        	
+	        	// page upon successful login	
+				nextPage =  "home.jsp";
+			} else  { 		// login failed
+				request.setAttribute("error", "Invalid Login! Try again!");
+			}
+	        
+			RequestDispatcher rs = request.getRequestDispatcher(nextPage);
 			rs.forward(request, response);			
 	       
 	    } catch(SQLException e) {
