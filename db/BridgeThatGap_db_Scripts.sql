@@ -10,10 +10,10 @@ create table employees (
 	email VARCHAR(60) NOT NULL,
 	password VARCHAR(15) NOT NULL
 );
-insert into employees values (NEXTVAL('emp_id_seq'),'Keisha', 'Consultant', 'Gender Diversity');
-insert into employees values (NEXTVAL('emp_id_seq'),'Pat', 'Consultant', 'Racial Diversity');
-insert into employees values (NEXTVAL('emp_id_seq'), 'Swathy', 'Consultant', 'Gender and Racial Diversity');
-insert into employees values (NEXTVAL('emp_id_seq'), 'Akule', 'Admin', 'Native American Workforce');
+insert into employees values (NEXTVAL('emp_id_seq'),'Keisha', 'consultant', 'Gender Diversity');
+insert into employees values (NEXTVAL('emp_id_seq'),'Pat', 'consultant', 'Racial Diversity');
+insert into employees values (NEXTVAL('emp_id_seq'), 'Swathy', 'consultant', 'Gender and Racial Diversity');
+insert into employees values (NEXTVAL('emp_id_seq'), 'Akule', 'admin', 'Native American Workforce');
 ---
 CREATE SEQUENCE client_id_seq START 101;
 create table clients (
@@ -43,9 +43,10 @@ create table consultations (
 	consult_id INTEGER PRIMARY KEY,
 	client_id INTEGER NOT NULL,
 	emp_id INTEGER NOT NULL,
-	interv_id INTEGER NOT NULL,
+	interv_id INTEGER NOT NULL,	
 	start_date DATE,
 	end_date DATE,
+	goal VARCHAR(100),
 	status VARCHAR(100) NOT NULL,
 	comments VARCHAR(1000)
 );
@@ -65,6 +66,8 @@ ADD CONSTRAINT interv_id_const
 FOREIGN KEY (interv_id) 
 REFERENCES interventions (interv_id);
 ----------------
-insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, status)
-values (NEXTVAL('consult_id_seq'),101, 104, 20,'02/19/2021','BEGIN CONSULTATION');
+insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, status, goal)
+values (NEXTVAL('consult_id_seq'),101, 101, 20,'02/19/2021','Begin Consultation', 'Gender diversity');
 
+insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, status, goal)
+values (NEXTVAL('consult_id_seq'),101, 101, 10,'02/26/2021','Consultation Ongoing, Working through decisions', 'Racial gaps');

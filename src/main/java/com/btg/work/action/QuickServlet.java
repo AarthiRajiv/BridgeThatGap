@@ -1,19 +1,9 @@
 package com.btg.work.action;
 
+import com.btg.work.model.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
-import com.btg.work.model.Client;
-import com.btg.work.model.ClientDAOImpl;
-import com.btg.work.model.Consultation;
-import com.btg.work.model.ConsultationDAOImpl;
-import com.btg.work.model.Employee;
-import com.btg.work.model.EmployeeDAOImpl;
-import com.btg.work.model.Intervention;
-import com.btg.work.model.InterventionDAOImpl;
-
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -57,21 +47,21 @@ public class QuickServlet extends HttpServlet {
         
         try  {
 			//
-        	EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+        	EmployeeDAO employeeDAO = new EmployeeDAO();
         	List<Employee> employeeList = employeeDAO.getAllEmployees();
 			writer.println("<html><br/><br/> Just before Employees for loop </html>");
 			for(Employee e : employeeList) {				
 				writer.println("<br /><html>Employee Name: " + e.getName() + "</html>");
 			}
 			//
-			ClientDAOImpl clientDAO = new ClientDAOImpl();
+			ClientDAO clientDAO = new ClientDAO();
 			List<Client> clientList = clientDAO.getAllClients();
 			writer.println("<html><br/><br/> Just before Clients for loop </html>");
 			for(Client c : clientList) {								
 				writer.println("<br /><html>Client Name: " + c.getClientName() + "</html>");
 			}
 			//	
-			InterventionDAOImpl interventionDAO = new InterventionDAOImpl();
+			InterventionDAO interventionDAO = new InterventionDAO();
 			List<Intervention> interventionList = interventionDAO.getAllInterventions();
 			writer.println("<html><br/><br/> Just before Intervs for loop </html>");
 			for(Intervention i : interventionList) {								
@@ -79,7 +69,7 @@ public class QuickServlet extends HttpServlet {
 			}		
 			
 			//	
-			ConsultationDAOImpl consultationDAO = new ConsultationDAOImpl();
+			ConsultationDAO consultationDAO = new ConsultationDAO();
 			List<Consultation> consultationList = consultationDAO.getAllConsultations();
 			writer.println("<html><br/><br/> Just before Consults for loop </html>");
 			for(Consultation c : consultationList) {								

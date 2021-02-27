@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 	    try  {
 	    	System.out.println("Login Servlet GET()");
-	        EmployeeDAO employeeDAO = new EmployeeDAOImpl();	        
+	        EmployeeDAO employeeDAO = new EmployeeDAO();	        
 	        Employee e = employeeDAO.verifyLogin(request.getParameter("email"), request.getParameter("password"));			
 			String nextPage="login.jsp";
 			
@@ -29,10 +29,15 @@ public class LoginServlet extends HttpServlet {
 	        	//save logged in Employee in session
 	        	(request.getSession()).setAttribute("employee", e); 
 				
+	        	// if admin, fetch all employees
+	        	if(e.getRole() == "admin")
+	        	
+	        	/*
 	        	// get all consultations for this employee in response
 	        	ConsultationDAO consultationDAO = new ConsultationDAOImpl();
 	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
 	        	(request.getSession()).setAttribute("consultationList", consultationList);
+	        	*/
 	        	
 	        	// page upon successful login	
 				nextPage =  "home.jsp";
