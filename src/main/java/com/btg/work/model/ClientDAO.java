@@ -19,5 +19,5 @@ public class ClientDAO {
 		}
 		ConnectionUtility.closeConnection();
 		return list;		
-	}	
+	}
 }

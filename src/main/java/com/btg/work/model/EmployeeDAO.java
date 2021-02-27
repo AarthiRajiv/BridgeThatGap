@@ -5,7 +5,7 @@ import java.util.*;
 
 import com.btg.work.ConnectionUtility;
 
-public class EmployeeDAO {
+public class EmployeeDAO {	//postgres dialect
 		
 	public List<Employee> getAllEmployees() throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();
@@ -34,4 +34,18 @@ public class EmployeeDAO {
 		} 			
 		return e;		
 	}
+	
+	public Boolean addNewEmployee(Employee e) throws SQLException {		
+		Boolean added = false;
+		Connection conn = ConnectionUtility.getConnection();
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees VALUES(NEXTVAL('emp_id_seq'),?,?,?,?)");		
+		ps.setString(1, e.getName());
+		ps.setString(2, e.getRole());
+		ps.setString(3, e.getSpecialization());
+		ps.setString(4, e.getEmail());
+		ps.executeUpdate();
+		added = true;
+		
+		return added;
+	}	
 }

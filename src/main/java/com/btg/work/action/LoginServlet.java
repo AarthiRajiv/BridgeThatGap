@@ -29,15 +29,14 @@ public class LoginServlet extends HttpServlet {
 	        	//save logged in Employee in session
 	        	(request.getSession()).setAttribute("employee", e); 
 				
-	        	// if admin, fetch all employees
+	        	// if admin, fetch all employees and save in session
 	        	if(e.getRole() == "admin")
+	        		(request.getSession()).setAttribute("employeeList", employeeDAO.getAllEmployees());
 	        	
-	        	/*
-	        	// get all consultations for this employee in response
-	        	ConsultationDAO consultationDAO = new ConsultationDAOImpl();
-	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
-	        	(request.getSession()).setAttribute("consultationList", consultationList);
-	        	*/
+	        	// get all consultations and save in session
+	        	ConsultationDAO consultationDAO = new ConsultationDAO();	        	
+	        	(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());
+	        	
 	        	
 	        	// page upon successful login	
 				nextPage =  "home.jsp";
