@@ -5,12 +5,12 @@ import java.util.*;
 
 import com.btg.work.ConnectionUtility;
 
-public class ClientDAO {
+public class ClientDAO {	//postgres dialect
 	
 	public List<Client> getAllClients() throws SQLException {
-		Connection conn = ConnectionUtility.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * from clients");
+		Connection conn = ConnectionUtility.getConnection();		
+		PreparedStatement ps = conn.prepareStatement("SELECT * from clients");
+		ResultSet rs = ps.executeQuery();		
 		
 		List<Client> list = new ArrayList<Client>() ;
 		while(rs.next()) {

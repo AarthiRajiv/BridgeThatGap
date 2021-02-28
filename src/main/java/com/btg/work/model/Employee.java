@@ -6,7 +6,7 @@ public class Employee {
 	private String role;
 	private String specialization;
 	private String email;
-	//private String password;
+	private String password; // keep??
 	
 	public Employee (Integer empId, String name, String role, String specialization, String email) {
 		super();
@@ -47,11 +47,12 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	/*
+	
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
+	
+	/*public void setPassword(String password) {
 		this.password = password;
 	}*/
 }

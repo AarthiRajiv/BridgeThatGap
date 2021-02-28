@@ -9,8 +9,8 @@ public class InterventionDAO {
 	
 	public List<Intervention> getAllInterventions() throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM interventions");
+		PreparedStatement ps = conn.prepareStatement("SELECT * from interventions");
+		ResultSet rs = ps.executeQuery();
 		
 		List<Intervention> list = new ArrayList<Intervention>() ;
 		while(rs.next()) {

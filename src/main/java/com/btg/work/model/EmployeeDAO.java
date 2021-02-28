@@ -9,8 +9,8 @@ public class EmployeeDAO {	//postgres dialect
 		
 	public List<Employee> getAllEmployees() throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * from employees");
+		PreparedStatement ps = conn.prepareStatement("SELECT emp_id, name, role, specialization, email from employees");
+		ResultSet rs = ps.executeQuery();
 		
 		List<Employee> list = new ArrayList<Employee>() ;
 		while(rs.next()) {
@@ -35,17 +35,17 @@ public class EmployeeDAO {	//postgres dialect
 		return e;		
 	}
 	
-	public Boolean addNewEmployee(Employee e) throws SQLException {		
+	public Employee addNewEmployee(Employee e) throws SQLException {		
 		Boolean added = false;
 		Connection conn = ConnectionUtility.getConnection();
-		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees VALUES(NEXTVAL('emp_id_seq'),?,?,?,?)");		
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees VALUES(?,?,?,?,?) RETURNING emp_Id");		
 		ps.setString(1, e.getName());
 		ps.setString(2, e.getRole());
 		ps.setString(3, e.getSpecialization());
 		ps.setString(4, e.getEmail());
-		ps.executeUpdate();
-		added = true;
+		ps.setString(5, e.getPassword());
+		e.setEmpId(ps.executeUpdate());
 		
-		return added;
+		return e;
 	}	
 }

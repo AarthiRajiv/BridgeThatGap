@@ -26,18 +26,29 @@ public class LoginServlet extends HttpServlet {
 			String nextPage="login.jsp";
 			
 	        if (e != null) { // login successful
-	        	//save logged in Employee in session
-	        	(request.getSession()).setAttribute("employee", e); 
+	        	//save logged in user (Employee) in session
+	        	(request.getSession()).setAttribute("user", e); 
 				
 	        	// if admin, fetch all employees and save in session
 	        	if(e.getRole() == "admin")
 	        		(request.getSession()).setAttribute("employeeList", employeeDAO.getAllEmployees());
+
+	        	//get all clients and save in session
+	        	ClientDAO clientDAO = new ClientDAO();
+	        	List<Client> clientList = clientDAO.getAllClients();
+	        	if(clientList.size() >0)
+	        		(request.getSession()).setAttribute("clientList", clientList);
+
+	        	//get all interventions and save in session       	
+	        	InterventionDAO interventionDAO = new InterventionDAO(); 
+	        	(request.getSession()).setAttribute("interventionList", interventionDAO.getAllInterventions());        	
 	        	
 	        	// get all consultations and save in session
-	        	ConsultationDAO consultationDAO = new ConsultationDAO();	        	
-	        	(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());
-	        	
-	        	
+	        	ConsultationDAO consultationDAO = new ConsultationDAO();
+	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
+	        	if(consultationList.size() >0)
+	        		(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());
+	      	
 	        	// page upon successful login	
 				nextPage =  "home.jsp";
 			} else  { 		// login failed

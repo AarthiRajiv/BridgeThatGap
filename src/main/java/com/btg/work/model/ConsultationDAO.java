@@ -5,7 +5,7 @@ import java.util.*;
 
 import com.btg.work.ConnectionUtility;
 
-public class ConsultationDAO {
+public class ConsultationDAO { //postgres dialect
 	
 	public List<Consultation> getAllConsultations() throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();

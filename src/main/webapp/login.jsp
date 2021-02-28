@@ -1,9 +1,8 @@
 <html>
-<head>
-    <title>Bridge That Gap</title>
-</head>
-<body>    
-    <br/> Hello There! Let's Login to bulid that bridge!! <br /><br/>
+<head><link rel="stylesheet" href="style.css"></head>
+<body>
+<header>Bridge That Gap!</header>    
+    <br/> Hello There! <br/> Let's Login to bulid that bridge!! <br /><br/>
     
     ${error}<br/><br/>  	
 	<form action="./login" method="post">
