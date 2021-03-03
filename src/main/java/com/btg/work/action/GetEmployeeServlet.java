@@ -11,15 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.btg.work.model.*;
 
-public class GetEmployeeServlet extends HttpServlet {	 
+// GetEmployee to Update or Delete
+public class GetEmployeeServlet extends HttpServlet { 
+	private static Logger log = LogManager.getLogger(GetEmployeeServlet.class);
 	public void init(ServletConfig config) {
-		System.out.println("GetEmployee Servlet initialized");
+		log.trace("GetEmployee Servlet initialized");
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    System.out.println("GetEmployee Servlet POST()");
+		log.trace("GetEmployee Servlet POST()");
 	    Integer empId = Integer.valueOf(request.getParameter("employeeToEdit"));
 	    List<Employee> list = (List<Employee>) (request.getSession()).getAttribute("employeeList");	    	
 	    for(Employee e : list) {
@@ -28,12 +33,12 @@ public class GetEmployeeServlet extends HttpServlet {
 	    		break;
 	    	}
 	    }    
-
+	    log.trace("Getting the Employee to Update/Delete");
 	    RequestDispatcher rs = request.getRequestDispatcher("editEmployee.jsp");
 		rs.forward(request, response);
 	}
 	
     public void destroy() {
-	        System.out.println("GetEmployee Servlet destroyed");
+    	log.trace("GetEmployee Servlet destroyed");
 	}
 }

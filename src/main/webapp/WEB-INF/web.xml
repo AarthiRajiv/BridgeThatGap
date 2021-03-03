@@ -26,7 +26,16 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>     
-    
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.btg.work.action.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping> 
+        
     <servlet>
         <servlet-name>GetEmployeeServlet</servlet-name>
         <servlet-class>com.btg.work.action.GetEmployeeServlet</servlet-class>

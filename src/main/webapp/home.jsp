@@ -4,11 +4,11 @@
 <header>Bridge That Gap!</header>
 
 	<div class="sidenav">
-	  <a href="${pageContext.request.contextPath}/employees.jsp">Consultations</a>
+	  <a href="${pageContext.request.contextPath}/consultations.jsp">Consultations</a>		
 	  <a href="${pageContext.request.contextPath}/clients.jsp">Clients</a>
 	  <a href="${pageContext.request.contextPath}/interventions.jsp">Interventions</a>
 	  <a href="${pageContext.request.contextPath}/employees.jsp">Employees</a>
-	  <a href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
+	  <a href="${pageContext.request.contextPath}/logout">Logout</a>
 	</div>
 	
 	<div class="main">	  

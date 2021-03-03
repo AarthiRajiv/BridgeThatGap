@@ -5,15 +5,21 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.btg.work.model.*;
 
 public class UpdateEmployeeServlet extends HttpServlet {	 
+	private static Logger log = LogManager.getLogger(UpdateEmployeeServlet.class);
+	
 	public void init(ServletConfig config) {
-		System.out.println("UpdateEmployee Servlet initialized");
+		log.trace("UpdateEmployee Servlet initialized");
 	}
 		
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    System.out.println("UpdateEmployee Servlet POST()");		    
+		log.trace("UpdateEmployee Servlet POST()");		    
 	    try {       
 	        Employee oldEmployee = (Employee) (request.getSession()).getAttribute("selectedEmployee");		        
 	        Employee newEmployee = new Employee(oldEmployee.getEmpId());
@@ -26,6 +32,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	        List<Employee> list = employeeDAO.updateEmployee(newEmployee);
 	        (request.getSession()).setAttribute("employeeList", list);
 	        
+	        log.trace("Employee updated ");
 			RequestDispatcher rs = request.getRequestDispatcher("employees.jsp");
 			rs.forward(request, response);
 	    } catch(SQLException e) {
@@ -34,6 +41,6 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	}
 		
 	public void destroy() {
-		System.out.println("GetEmployee Servlet destroyed");
+		log.trace("UpdateEmployee Servlet destroyed");
 	}
 }

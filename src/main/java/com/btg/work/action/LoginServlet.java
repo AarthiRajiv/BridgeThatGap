@@ -11,16 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.btg.work.model.*;
 
 public class LoginServlet extends HttpServlet {	 
+	private static Logger log = LogManager.getLogger(LoginServlet.class);
+	
 	public void init(ServletConfig config) {
-		System.out.println("Login Servlet initialized");
+		log.trace("Login Servlet initialized");
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 	    try  {
-	    	System.out.println("Login Servlet POST()");
+	    	log.trace("Login Servlet POST()");
 	        EmployeeDAO employeeDAO = new EmployeeDAO();	        
 	        Employee e = employeeDAO.verifyLogin(request.getParameter("email"), request.getParameter("password"));			
 			String nextPage="home.jsp";
@@ -50,7 +55,9 @@ public class LoginServlet extends HttpServlet {
 	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
 	        	if(consultationList.size() > 0)
 	        		(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());	      	
-	        		
+	        	
+	        	log.trace("Successful Login by user with Email: "+e.getEmail());
+	        	
 			} else  { 		// login failed
 				request.setAttribute("error", "Invalid Login! Try again!");
 				nextPage="login.jsp";
@@ -60,12 +67,12 @@ public class LoginServlet extends HttpServlet {
 			rs.forward(request, response);			
 	       
 	    } catch(SQLException e) {
-	    	   throw new RuntimeException(e);
+	    	log.trace("SQL Exception in Login Servlet");
+	    	throw new RuntimeException(e);
 	    }
-
 	}
 	
     public void destroy() {
-	        System.out.println("Login Servlet destroyed");
+	        log.trace("Login Servlet destroyed");
 	}
 }

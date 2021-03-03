@@ -13,7 +13,7 @@ public class ConsultationDAO { //postgres dialect
 
 		ResultSet rs = stmt.executeQuery("select e.emp_id, e.name, e.role, e.specialization, e.email, "
 				+ "cl.client_id, cl.client_name, cl.contact_name, cl.contact_phone, cl.contact_email, "
-				+ "i.interv_id, i.option, c.consult_id, c.start_date, c.end_date, c.status, c.comments "
+				+ "i.interv_id, i.option, c.consult_id, c.goal, c.start_date, c.end_date, c.status, c.comments "
 				+ "from employees e, clients cl, interventions i, consultations c "
 				+ "where e.emp_id = c.emp_id AND cl.client_id = c.client_id AND i.interv_id = c.interv_id");
 		
@@ -22,7 +22,8 @@ public class ConsultationDAO { //postgres dialect
 			Employee emp = new Employee(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			Client client = new Client(rs.getInt(6),rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
 			Intervention interv = new Intervention(rs.getInt(11), rs.getString(12));	
-			Consultation c = new Consultation(rs.getInt(13), client, interv, emp, rs.getDate(14), rs.getDate(15), rs.getString(16), rs.getString(17));
+			Consultation c = new Consultation(rs.getInt(13), client, interv, emp, rs.getString(14), rs.getDate(15), 
+					rs.getDate(16), rs.getString(17), rs.getString(18));
 			list.add(c);				
 		}
 		ConnectionUtility.closeConnection();

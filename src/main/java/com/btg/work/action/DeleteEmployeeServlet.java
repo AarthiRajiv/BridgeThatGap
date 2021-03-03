@@ -10,15 +10,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import com.btg.work.model.*;
 
 public class DeleteEmployeeServlet extends HttpServlet {	 
+	private static Logger log = LogManager.getLogger(DeleteEmployeeServlet.class);
+	
 	public void init(ServletConfig config) {
-		System.out.println("DeleteEmployee Servlet initialized");
+		log.trace("DeleteEmployee Servlet initialized");
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    System.out.println("DeleteEmployee Servlet POST()");
+		log.trace("DeleteEmployee Servlet POST()");
 	    
 	    try {
 	    
@@ -28,6 +34,7 @@ public class DeleteEmployeeServlet extends HttpServlet {
 	        List<Employee> list = employeeDAO.deleteEmployee(e);
 	        (request.getSession()).setAttribute("employeeList", list);
 	        
+	        log.trace("Deleted Employee" );
 			RequestDispatcher rs = request.getRequestDispatcher("employees.jsp");
 			rs.forward(request, response);
 	    } catch(SQLException e) {
@@ -36,6 +43,6 @@ public class DeleteEmployeeServlet extends HttpServlet {
 	}
 	
     public void destroy() {
-	        System.out.println("GetEmployee Servlet destroyed");
+    	log.trace("Delete Employee Servlet destroyed");
 	}
 }

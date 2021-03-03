@@ -7,13 +7,15 @@ public class Consultation implements Serializable {
 	private Client client;	
 	private Intervention intervention;
 	private Employee employee;
+	private String goal;
 	private Date startDate;
 	private Date endDate;
 	private String status;
 	private String comment;
 	
+	
 	public Consultation(Integer consultationId, Client client, Intervention intervention, Employee employee,
-			Date startDate, Date endDate, String status, String comment) {
+			String goal, Date startDate, Date endDate, String status, String comment) {
 		super();
 		this.consultationId = consultationId;
 		this.client = client;
@@ -23,6 +25,7 @@ public class Consultation implements Serializable {
 		this.endDate = endDate;
 		this.status = status;
 		this.comment = comment;
+		this.goal = goal;
 	}
 	
 	public Integer getConsultationId() {
@@ -87,5 +90,13 @@ public class Consultation implements Serializable {
 
 	public void setComment(String comment) {
 		this.comment = comment;
-	}	
+	}
+
+	public String getGoal() {
+		return goal;
+	}
+
+	public void setGoal(String goal) {
+		this.goal = goal;
+	}
 }
