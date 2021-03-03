@@ -1,6 +1,7 @@
 package com.btg.work.model;
+import java.io.Serializable;
 
-public class Employee {
+public class Employee implements Serializable{
 	private Integer empId;
 	private String name;
 	private String role;
@@ -8,6 +9,13 @@ public class Employee {
 	private String email;
 	private String password; // keep??
 	
+	public Employee() {
+		super();
+	}
+	public Employee (Integer empId) {
+		super();
+		this.empId = empId;
+	}
 	public Employee (Integer empId, String name, String role, String specialization, String email) {
 		super();
 		this.empId = empId;
@@ -33,7 +41,7 @@ public class Employee {
 		return role;
 	}
 	public void setRole(String role) {
-		this.role = role;
+		this.role = role.toLowerCase();
 	}
 	public String getSpecialization() {
 		return specialization;
@@ -52,7 +60,8 @@ public class Employee {
 		return password;
 	}
 	
-	/*public void setPassword(String password) {
+	/*
+	public void setPassword(String password) {
 		this.password = password;
-	}*/
+	} */
 }

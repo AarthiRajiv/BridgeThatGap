@@ -1,6 +1,7 @@
 package com.btg.work.model;
+import java.io.Serializable;
 
-public class Intervention {
+public class Intervention implements Serializable {
 	private Integer interventionId;
 	private String option;
 	

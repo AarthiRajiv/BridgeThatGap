@@ -38,9 +38,9 @@ insert into interventions values (DEFAULT,'One-on-one sessions');
 ---
 CREATE TABLE "BridgeThatGap".consultations (
 	consult_id SERIAL PRIMARY KEY,
-	client_id INTEGER NOT NULL,
-	emp_id INTEGER NOT NULL,
-	interv_id INTEGER NOT NULL,
+	client_id INTEGER,
+	emp_id INTEGER,
+	interv_id INTEGER,
 	start_date date NULL,
 	end_date date NULL,
 	status varchar(100) NOT NULL,

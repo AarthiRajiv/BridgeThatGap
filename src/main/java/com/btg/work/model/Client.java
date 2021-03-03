@@ -1,6 +1,7 @@
 package com.btg.work.model;
+import java.io.Serializable;
 
-public class Client {
+public class Client implements Serializable {
 	private Integer clientId;	
 	private String clientName;
 	private String contactName;

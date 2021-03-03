@@ -1,8 +1,8 @@
 package com.btg.work.model;
-
+import java.io.Serializable;
 import java.util.Date;
 
-public class Consultation {
+public class Consultation implements Serializable {
 	private Integer consultationId;
 	private Client client;	
 	private Intervention intervention;

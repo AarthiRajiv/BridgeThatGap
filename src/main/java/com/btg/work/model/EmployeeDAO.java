@@ -21,6 +21,7 @@ public class EmployeeDAO {	//postgres dialect
 		return list;		
 	}	
 	
+	// verify login by email and password 
 	public Employee verifyLogin(String email, String pwd) throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM employees WHERE email=? AND password=?");
@@ -35,17 +36,48 @@ public class EmployeeDAO {	//postgres dialect
 		return e;		
 	}
 	
-	public Employee addNewEmployee(Employee e) throws SQLException {		
-		Boolean added = false;
+	
+	// delete Employee and return updated Employee List
+	public List<Employee> deleteEmployee(Employee e) throws SQLException {
 		Connection conn = ConnectionUtility.getConnection();
-		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees VALUES(?,?,?,?,?) RETURNING emp_Id");		
+		PreparedStatement ps = conn.prepareStatement("DELETE FROM employees WHERE emp_id=?");
+		ps.setInt(1, e.getEmpId());		
+		ps.executeUpdate();
+		
+		return (getAllEmployees()); // send new list from db
+	}
+	
+	
+	// update Employee and return updated Employee List
+	public List<Employee> updateEmployee(Employee e) throws SQLException {
+		Connection conn = ConnectionUtility.getConnection();				
+		PreparedStatement ps = conn.prepareStatement("UPDATE employees SET (name, role, specialization, email, password) = (?,?,?,?,?) "
+				+ "WHERE emp_id=?");
 		ps.setString(1, e.getName());
 		ps.setString(2, e.getRole());
 		ps.setString(3, e.getSpecialization());
 		ps.setString(4, e.getEmail());
-		ps.setString(5, e.getPassword());
-		e.setEmpId(ps.executeUpdate());
+		ps.setString(5, "password");  //default pwd upon any change to Employee
+		ps.setInt(6, e.getEmpId());	
 		
-		return e;
+		ps.executeUpdate();
+		
+		return (getAllEmployees()); // send new list from  db
+	}		
+	
+	public List<Employee> addEmployee(Employee e) throws SQLException {		
+		//Boolean added = false;
+		Connection conn = ConnectionUtility.getConnection();
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees (name, role, specialization, email, password) "
+				//+ "VALUES(?,?,?,?,?) RETURNING emp_Id");
+				+ "VALUES(?,?,?,?,?)");
+		ps.setString(1, e.getName());
+		ps.setString(2, e.getRole());
+		ps.setString(3, e.getSpecialization());
+		ps.setString(4, e.getEmail());
+		ps.setString(5, "password");
+		ps.executeUpdate();
+		
+		return (getAllEmployees()); // send new list from  db
 	}	
 }

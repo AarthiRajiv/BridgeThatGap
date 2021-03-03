@@ -20,23 +20,25 @@ public class LoginServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 	    try  {
-	    	System.out.println("Login Servlet GET()");
+	    	System.out.println("Login Servlet POST()");
 	        EmployeeDAO employeeDAO = new EmployeeDAO();	        
 	        Employee e = employeeDAO.verifyLogin(request.getParameter("email"), request.getParameter("password"));			
-			String nextPage="login.jsp";
+			String nextPage="home.jsp";
 			
 	        if (e != null) { // login successful
 	        	//save logged in user (Employee) in session
 	        	(request.getSession()).setAttribute("user", e); 
 				
 	        	// if admin, fetch all employees and save in session
-	        	if(e.getRole() == "admin")
-	        		(request.getSession()).setAttribute("employeeList", employeeDAO.getAllEmployees());
+	        	if((e.getRole()).equals("admin")) {
+	        		List<Employee> empList = employeeDAO.getAllEmployees();	        		
+		        	(request.getSession()).setAttribute("employeeList", empList);
+	        	}
 
 	        	//get all clients and save in session
 	        	ClientDAO clientDAO = new ClientDAO();
 	        	List<Client> clientList = clientDAO.getAllClients();
-	        	if(clientList.size() >0)
+	        	if(clientList.size() > 0)
 	        		(request.getSession()).setAttribute("clientList", clientList);
 
 	        	//get all interventions and save in session       	
@@ -46,13 +48,12 @@ public class LoginServlet extends HttpServlet {
 	        	// get all consultations and save in session
 	        	ConsultationDAO consultationDAO = new ConsultationDAO();
 	        	List<Consultation> consultationList = consultationDAO.getAllConsultations();
-	        	if(consultationList.size() >0)
-	        		(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());
-	      	
-	        	// page upon successful login	
-				nextPage =  "home.jsp";
+	        	if(consultationList.size() > 0)
+	        		(request.getSession()).setAttribute("consultationList", consultationDAO.getAllConsultations());	      	
+	        		
 			} else  { 		// login failed
 				request.setAttribute("error", "Invalid Login! Try again!");
+				nextPage="login.jsp";
 			}
 	        
 			RequestDispatcher rs = request.getRequestDispatcher(nextPage);
@@ -63,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 	    }
 
 	}
-
+	
     public void destroy() {
 	        System.out.println("Login Servlet destroyed");
 	}

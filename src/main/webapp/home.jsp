@@ -5,14 +5,18 @@
 
 	<div class="sidenav">
 	  <a href="${pageContext.request.contextPath}/employees.jsp">Consultations</a>
-	  <a href="#services">Clients</a>
-	  <a href="#clients">Interventions</a>
+	  <a href="${pageContext.request.contextPath}/clients.jsp">Clients</a>
+	  <a href="${pageContext.request.contextPath}/interventions.jsp">Interventions</a>
 	  <a href="${pageContext.request.contextPath}/employees.jsp">Employees</a>
+	  <a href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
 	</div>
 	
 	<div class="main">	  
-	  <br/> Hello ${user.name}! Your role: ${user.role} <br /> <br/>
-	   ${consultationList[0].consultationId}
+	  <br/> Hello ${user.name}! <br /> <br/>
+	  Choose an option from the left menu.
+	  <br/>
+	   <img src="diversityStockPhoto.jpg">	   
+	   
 	</div>     	
 
 </body>
