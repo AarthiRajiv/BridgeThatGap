@@ -44,7 +44,7 @@ CREATE TABLE "BridgeThatGap".consultations (
 	start_date date NULL,
 	end_date date NULL,
 	status varchar(100) NOT NULL,
-	"comments" varchar(1000) NULL,
+	comment varchar(1000) NULL,
 	goal varchar(100) NULL,	
 	CONSTRAINT fk_client_id FOREIGN KEY (client_id) REFERENCES clients (client_id),
 	CONSTRAINT fk_emp_id FOREIGN KEY (emp_id) REFERENCES employees (emp_id),
@@ -52,8 +52,8 @@ CREATE TABLE "BridgeThatGap".consultations (
 );
 
 ----------------
-insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, status, goal)
+insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, goal, status, comment)
 values (DEFAULT, 1, 1, 3,'02/19/2021','Begin Consultation', 'Gender diversity');
 
-insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, status, goal)
+insert into consultations (consult_id, client_id, emp_id, interv_id, start_date, goal, status, comment)
 values (DEFAULT, 1, 2, 1,'02/26/2021','Ongoing, waiting on upper management', 'Racial gaps');

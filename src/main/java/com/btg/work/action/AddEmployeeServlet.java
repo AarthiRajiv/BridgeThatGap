@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.btg.work.model.*;
@@ -30,7 +30,7 @@ public class AddEmployeeServlet extends HttpServlet {
 			List<Employee> list = employeeDAO.addEmployee(newEmployee);
 			(request.getSession()).setAttribute("employeeList", list);
 			        
-			log.trace("Employee added ");
+			log.trace("New Employee added ");
 			RequestDispatcher rs = request.getRequestDispatcher("employees.jsp");
 			rs.forward(request, response);
 		} catch(SQLException e) {

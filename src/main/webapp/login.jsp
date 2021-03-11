@@ -1,8 +1,14 @@
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head><link rel="stylesheet" href="style.css">
+<style>
+body {
+  background-image: url('visual.jpg');
+}
+</style>
+</head>
 <body>
 <header>Bridge That Gap!</header>    
-    <br/> Hello There! <br/> Let's Login to bulid that bridge!! <br /><br/>
+    <br/> <b>Hello There! <b><br/> Let's Login to bulid that bridge!! <br /><br/>
     
     ${error}<br/><br/>  	
 	<form action="./login" method="post">

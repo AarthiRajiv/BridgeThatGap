@@ -17,20 +17,25 @@
 	<div class="main">	  
 	  <br/> Hello ${user.name}! <br /> <br/>		  
 	  
-	  <form action="./addEmployee" method="post">
-		  Employee Details:<br/><br/>
-		  	<label>Name:</label>
-	  		<input type="text" name="fName"><br/><br/>   
+	  <form action="./addConsultation" method="post">
+		  Consultation Details:<br/><br/>
+		  	<label>Client Name:</label>
+	  		<input type="text" name="fClient"><br/><br/>   
 	  			
-	  		<label>Role:</label>
-	  		<input type="text" name="fRole"><br/><br/>
+	  		<label>Intervention:</label>
+	  		<input type="text" name="fIntervention"><br/><br/>
 			
-			<label>Specialization:</label>
-			<input type="text" name="fSpecialization"><br/><br/>
+			<label>Consultant:</label>
+			<input type="text" name="fEmployee"><br/><br/>
 	
-			<label>Email:</label>
-			<input type="text" name="fEmail"><br/><br/>
-			
+			<label>Goal:</label>
+			<input type="text" name="fGoal"><br/><br/>
+
+			<label>Status:</label>
+			<input type="text" name="fStatus"><br/><br/>
+
+			<label>Start Date:</label>
+			<input type="text" name="fStartDate"><br/><br/>						
 			<input type="submit" name="action"  value="Add">
 		</form>
 	</div>     	

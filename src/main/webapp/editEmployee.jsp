@@ -7,8 +7,10 @@
 	<div class="sidenav">
 	  <a href="${pageContext.request.contextPath}/consultations.jsp">Consultations</a>		
 	  <a href="${pageContext.request.contextPath}/clients.jsp">Clients</a>
-	  <a href="${pageContext.request.contextPath}/interventions.jsp">Interventions</a>
-	  <a href="${pageContext.request.contextPath}/employees.jsp">Employees</a>
+	  <a href="${pageContext.request.contextPath}/interventions.jsp">Interventions</a>	    
+	  <c:if test = "${user.role == 'admin'}">
+	  	<a href="${pageContext.request.contextPath}/employees.jsp">Employees</a>	
+	  </c:if>	  
 	  <a href="${pageContext.request.contextPath}/logout">Logout</a>
 	</div>	
 	

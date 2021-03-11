@@ -2,12 +2,16 @@ package com.btg.work.model;
 import java.io.Serializable;
 
 public class Client implements Serializable {
-	private Integer clientId;	
+	private Integer clientId;
 	private String clientName;
 	private String contactName;
 	private String contactPhone;
 	private String contactEmail;
 	
+	public Client(Integer clientId) {
+		super();
+		this.clientId = clientId;
+	}
 	public Client(Integer clientId, String clientName, String contactName, String contactPhone, String contactEmail) {
 		super();
 		this.clientId = clientId;

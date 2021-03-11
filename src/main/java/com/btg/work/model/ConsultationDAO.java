@@ -13,7 +13,7 @@ public class ConsultationDAO { //postgres dialect
 
 		ResultSet rs = stmt.executeQuery("select e.emp_id, e.name, e.role, e.specialization, e.email, "
 				+ "cl.client_id, cl.client_name, cl.contact_name, cl.contact_phone, cl.contact_email, "
-				+ "i.interv_id, i.option, c.consult_id, c.goal, c.start_date, c.end_date, c.status, c.comments "
+				+ "i.interv_id, i.option, c.consult_id, c.goal, c.start_date, c.end_date, c.status, c.comment "
 				+ "from employees e, clients cl, interventions i, consultations c "
 				+ "where e.emp_id = c.emp_id AND cl.client_id = c.client_id AND i.interv_id = c.interv_id");
 		
@@ -28,5 +28,21 @@ public class ConsultationDAO { //postgres dialect
 		}
 		ConnectionUtility.closeConnection();
 		return list;		
+	}	
+	
+	public List<Consultation> addConsultation(Consultation c) throws SQLException {		
+		Connection conn = ConnectionUtility.getConnection();
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO consultations (client_id, emp_id, interv_id, start_date, goal, status, comment) "
+				+ "VALUES(?,?,?,?,?,?,?)");		
+		ps.setInt(1, c.getClient().getClientId());
+		ps.setInt(2, c.getEmployee().getEmpId());
+		ps.setInt(3, c.getIntervention().getInterventionId());		
+		ps.setDate(4, c.getStartDate());
+		ps.setString(5, c.getGoal());
+		ps.setString(6, c.getStatus());
+		ps.setString(7, c.getComment());
+		ps.executeUpdate();
+		
+		return (getAllConsultations()); // send new list from db
 	}	
 }

@@ -69,7 +69,6 @@ public class EmployeeDAO {	//postgres dialect
 		//Boolean added = false;
 		Connection conn = ConnectionUtility.getConnection();
 		PreparedStatement ps = conn.prepareStatement("INSERT INTO employees (name, role, specialization, email, password) "
-				//+ "VALUES(?,?,?,?,?) RETURNING emp_Id");
 				+ "VALUES(?,?,?,?,?)");
 		ps.setString(1, e.getName());
 		ps.setString(2, e.getRole());

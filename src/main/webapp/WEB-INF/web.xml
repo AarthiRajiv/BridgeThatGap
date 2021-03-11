@@ -71,6 +71,15 @@
         <servlet-name>AddEmployeeServlet</servlet-name>
         <url-pattern>/addEmployee</url-pattern>
     </servlet-mapping>  
+
+    <servlet>
+        <servlet-name>AddConsultationServlet</servlet-name>
+        <servlet-class>com.btg.work.action.AddConsultationServlet</servlet-class>
+    </servlet>   
+    <servlet-mapping>
+        <servlet-name>AddConsultationServlet</servlet-name>
+        <url-pattern>/addConsultation</url-pattern>
+    </servlet-mapping> 
        
 <!--   JSP Mappings  -->    
      

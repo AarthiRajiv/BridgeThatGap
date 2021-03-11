@@ -1,6 +1,6 @@
 package com.btg.work.model;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Consultation implements Serializable {
 	private Integer consultationId;
@@ -12,6 +12,10 @@ public class Consultation implements Serializable {
 	private Date endDate;
 	private String status;
 	private String comment;
+	
+	public Consultation() {
+		super();
+	}
 	
 	
 	public Consultation(Integer consultationId, Client client, Intervention intervention, Employee employee,

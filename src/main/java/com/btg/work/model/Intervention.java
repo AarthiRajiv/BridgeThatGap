@@ -4,7 +4,11 @@ import java.io.Serializable;
 public class Intervention implements Serializable {
 	private Integer interventionId;
 	private String option;
-	
+
+	public Intervention(Integer interventionId) {
+		super();
+		this.interventionId = interventionId;
+	}
 	public Intervention (Integer interventionId, String option) {
 		super();
 		this.interventionId = interventionId;
